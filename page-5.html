@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Search & Browse</title>
+  <style>
+    :root {
+      --page: #f9f7f2;
+      --surface: #ffffff;
+      --ink: #273a30;
+      --muted: #64786c;
+      --border: #e5e0d7;
+      --green: #4b825f;
+      --tag: #f5f5ed;
+      --found-bg: #dcebdd;
+      --found: #3f7d5c;
+      --lost-bg: #ffe3d2;
+      --lost: #ed7c3d;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      background: #e9e7e1;
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .phone {
+      position: relative;
+      min-height: 100vh;
+      max-width: 402px;
+      margin: auto;
+      padding: 14px 24px 106px;
+      background: var(--page);
+    }
+
+    .status-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .status-icons { display: flex; align-items: center; gap: 8px; }
+    .signal { letter-spacing: -2px; font-size: 15px; }
+
+    .battery {
+      position: relative;
+      width: 25px;
+      height: 12px;
+      border: 1.5px solid var(--ink);
+      border-radius: 4px;
+    }
+
+    .battery::before { content: ""; position: absolute; inset: 2px; border-radius: 2px; background: var(--ink); }
+    .battery::after { content: ""; position: absolute; right: -4px; top: 3px; width: 2px; height: 4px; background: var(--ink); }
+
+    h1 { margin: 27px 0 15px; font-size: 24px; line-height: 29px; }
+
+    .search-row { display: flex; gap: 12px; }
+
+    .search-box {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      gap: 11px;
+      height: 48px;
+      padding: 0 16px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--surface);
+    }
+
+    .search-icon { color: var(--muted); font-size: 25px; line-height: 1; }
+    .search-box input { width: 100%; border: 0; outline: 0; color: var(--ink); font: inherit; font-size: 14px; }
+
+    .filter-button {
+      display: grid;
+      width: 48px;
+      height: 48px;
+      place-items: center;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--surface);
+      color: var(--green);
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    .filters { display: flex; gap: 8px; margin: 16px 0 17px; overflow-x: auto; scrollbar-width: none; }
+    .filters::-webkit-scrollbar { display: none; }
+
+    .item-image {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      bottom: 12px;
+      width: 80px;
+      border-radius: 10px;
+      background: #eff0e9;
+    }
+
+    .category, .status {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 5px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .category { background: var(--tag); color: var(--muted); }
+    .status { position: absolute; top: 13px; right: 12px; }
+    .status.found { background: var(--found-bg); color: var(--found); }
+    .status.lost { background: var(--lost-bg); color: var(--lost); }
+
+    h2 { margin: 6px 0 3px; font-size: 16px; line-height: 19px; }
+    .meta { margin: 2px 0; color: var(--muted); font-size: 13px; }
+
+    .bottom-nav {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      height: 93px;
+      justify-content: space-around;
+      padding-top: 13px;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .nav-item { display: grid; min-width: 48px; justify-items: center; gap: 4px; color: var(--muted); font-size: 11px; text-decoration: none; }
+    .nav-icon { font-size: 23px; line-height: 24px; }
+    .nav-item.active { color: var(--green); font-weight: 700; }
+  </style>
+</head>
+<body>
+  <main class="phone">
+    <div class="status-bar">
+      <span>9:41</span>
+      <div class="status-icons"><span class="signal">▂▄▆</span><span>⌁</span><span class="battery"></span></div>
+    </div>
+
+    <h1>Search &amp; Browse</h1>
+
+    <div class="search-row">
+      <label class="search-box">
+        <span class="search-icon">⌕</span>
+        <input type="search" value="Wallet" aria-label="Search items" />
+      </label>
+      <button class="filter-button" type="button" aria-label="Open filters">☷</button>
+    </div>
+
+    <div class="filters" aria-label="Categories">
+      <button class="filter-chip active">All</button>
+      <button class="filter-chip">Lost</button>
+      <button class="filter-chip">Found</button>
+      <button class="filter-chip">Electronics</button>
+      <button class="filter-chip">Keys</button>
+    </div>
+
+    <div class="results-heading"><span>SHOWING 14 RESULTS</span><span class="sort">Relevance⌄</span></div>
+
+    <section class="results" aria-label="Search results">
+      <article class="result-card">
+        <div class="item-image" aria-hidden="true"></div>
+        <span class="category">Wallet</span><span class="status found">Found</span>
+        <h2>Leather Trifold Wallet</h2>
+        <p class="meta">◉ Cafeteria Annex Counter</p>
+        <p class="meta">◷ 2 hrs ago</p>
+      </article>
+
+      <article class="result-card">
+        <div class="item-image" aria-hidden="true"></div>
+        <span class="category">Bag</span><span class="status lost">Lost</span>
+        <h2>Patagonia Backpack Grey</h2>
+        <p class="meta">◉ Gymnasium Bleachers</p>
+        <p class="meta">◷ 4 hrs ago</p>
+      </article>
+
+      <article class="result-card">
+        <div class="item-image" aria-hidden="true"></div>
+        <span class="category">Electronics</span><span class="status found">Found</span>
+        <h2>Sony Wireless Headphones</h2>
+        <p class="meta">◉ Student Union Lounge</p>
+        <p class="meta">◷ 1 day ago</p>
+      </article>
+
+      <article class="result-card">
+        <div class="item-image" aria-hidden="true"></div>
+        <span class="category">ID Card</span><span class="status lost">Lost</span>
+        <h2>State Uni ID Card</h2>
+        <p class="meta">◉ Engineering Quad Pathway</p>
+        <p class="meta">◷ 2 days ago</p>
+      </article>
+    </section>
+
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <a class="nav-item" href="#"><span class="nav-icon">⌂</span><span>Home</span></a>
+      <a class="nav-item active" href="#"><span class="nav-icon">⌕</span><span>Search</span></a>
+      <a class="nav-item" href="#"><span class="nav-icon">⊕</span><span>Report</span></a>
+      <a class="nav-item" href="#"><span class="nav-icon">♧</span><span>Matches</span></a>
+      <a class="nav-item" href="#"><span class="nav-icon">♙</span><span>Profile</span></a>
+    </nav>
+  </main>
+</body>
+</html>

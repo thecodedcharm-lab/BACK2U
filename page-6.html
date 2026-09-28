@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Item Details</title>
+  <style>
+    :root {
+      --page: #f9f7f2;
+      --surface: #ffffff;
+      --ink: #273a30;
+      --muted: #64786c;
+      --border: #e5e0d7;
+      --green: #4b825f;
+      --orange: #ee8a47;
+      --lost-bg: #ffe3d2;
+      --lost: #ed7c3d;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      background: #e9e7e1;
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .phone {
+      position: relative;
+      min-height: 100vh;
+      max-width: 402px;
+      margin: auto;
+      padding: 14px 24px 196px;
+      background: var(--page);
+    }
+
+    .status-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .status-icons { display: flex; align-items: center; gap: 8px; }
+    .signal { letter-spacing: -2px; font-size: 15px; }
+    .battery { position: relative; width: 25px; height: 12px; border: 1.5px solid var(--ink); border-radius: 4px; }
+    .battery::before { content: ""; position: absolute; inset: 2px; border-radius: 2px; background: var(--ink); }
+    .battery::after { content: ""; position: absolute; right: -4px; top: 3px; width: 2px; height: 4px; background: var(--ink); }
+
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 27px;
+    }
+
+    .top-bar h1 { margin: 0; font-size: 18px; }
+
+    .round-button {
+      display: grid;
+      width: 32px;
+      height: 32px;
+      place-items: center;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      background: var(--surface);
+      color: var(--ink);
+      font-size: 21px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .image-space { height: 247px; }
+
+    .pill { display: inline-block; padding: 5px 10px; border-radius: 7px; font-size: 12px; font-weight: 700; }
+    .category { background: var(--surface); color: var(--muted); border: 1px solid var(--border); }
+    .lost { margin-left: 5px; background: var(--lost-bg); color: var(--lost); }
+
+    h2 { margin: 14px 0 13px; font-size: 24px; line-height: 29px; }
+
+    .reporter { display: grid; gap: 1px; margin: 0 0 20px 44px; font-size: 13px; }
+    .reporter strong { font-size: 14px; }
+    .reporter span { color: var(--muted); font-size: 11px; }
+
+    h3 { margin: 0 0 10px; font-size: 14px; }
+    .description { margin: 0 0 20px; color: var(--muted); font-size: 14px; line-height: 21px; }
+    .location-label { margin-bottom: 12px; }
+    .pin { color: var(--green); font-size: 17px; vertical-align: -1px; }
+    .location { margin: 0 0 11px; color: var(--muted); font-size: 14px; }
+
+    .map-placeholder {
+      position: relative;
+      height: 101px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--surface);
+    }
+
+    .map-pin {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: grid;
+      width: 31px;
+      height: 31px;
+      place-items: center;
+      transform: translate(-1px, -1px);
+      border-radius: 50%;
+      background: var(--green);
+      color: white;
+      font-size: 17px;
+    }
+
+    .actions {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 197px;
+      padding: 23px 24px 0;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .action-button {
+      width: 100%;
+      height: 49px;
+      margin-bottom: 11px;
+      border: 1px solid var(--border);
+      border-radius: 25px;
+      background: var(--surface);
+      color: var(--muted);
+      font: inherit;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .action-button.primary { border-color: var(--orange); background: var(--orange); color: white; }
+
+    .home-indicator { width: 134px; height: 5px; margin: 17px auto 0; border-radius: 5px; background: var(--ink); }
+  </style>
+</head>
+<body>
+  <main class="phone">
+    <div class="status-bar">
+      <span>9:41</span>
+      <div class="status-icons"><span class="signal">▂▄▆</span><span>⌁</span><span class="battery"></span></div>
+    </div>
+
+    <header class="top-bar">
+      <button class="round-button" type="button" aria-label="Go back">‹</button>
+      <h1>Item Details</h1>
+      <button class="round-button" type="button" aria-label="Share item">♣</button>
+    </header>
+
+    <div class="image-space" aria-label="Item photo area"></div>
+
+    <section>
+      <span class="pill category">Hydration</span><span class="pill lost">Lost</span>
+      <h2>Dorm Keys with Red Fob</h2>
+      <p class="reporter"><strong>Alex Rivera</strong><span>Reported 10 mins ago</span></p>
+
+      <h3>Description</h3>
+      <p class="description">Lost my keys near the Hostel Block B Common Room. The ring has a red rectangular plastic fob with "Hostel room number 302 written in black sharpie, along with a small silver bottle opener.</p>
+
+      <h3 class="location-label"><span class="pin">◉</span> Last Seen Location</h3>
+      <p class="location">Hostel Block B Common Room (near the pool table)</p>
+      <div class="map-placeholder"><span class="map-pin">◉</span></div>
+    </section>
+
+    <footer class="actions">
+      <button class="action-button primary" type="button">This Is Mine</button>
+      <button class="action-button" type="button">Report Sighting</button>
+      <div class="home-indicator"></div>
+    </footer>
+  </main>
+</body>
+</html>
