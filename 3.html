@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Campus Lost & Found</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #faf9f4;
+      --white: #ffffff;
+      --text: #293a31;
+      --muted: #68766e;
+      --border: #e7e5de;
+
+      --green: #4f8067;
+      --green-dark: #315d48;
+      --green-light: #dcebd9;
+
+      --orange: #ef8c4b;
+      --orange-light: #fde3cd;
+
+      --nav-border: #e3e2dc;
+    }
+
+    body {
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+      background: #ddd;
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* Phone frame */
+    .app {
+      width: 100%;
+      max-width: 402px;
+      min-height: 100vh;
+      margin: 0 auto;
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+      padding-bottom: 88px;
+    }
+
+    /* ---------------- HEADER ---------------- */
+
+    .header {
+      padding: 25px 24px 0;
+    }
+
+    .header-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .greeting h1 {
+      font-size: 23px;
+      line-height: 28px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #293a31;
+    }
+
+    .greeting p {
+      margin-top: 2px;
+      font-size: 13px;
+      color: #6b786f;
+      letter-spacing: 0.05px;
+    }
+
+    .notification {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #fff;
+      border: 1px solid #ebe9e2;
+      box-shadow: 0 2px 8px rgba(47, 59, 52, 0.04);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      color: #33463c;
+    }
+
+    .notification svg {
+      width: 21px;
+      height: 21px;
+    }
+
+    /* ---------------- SEARCH ---------------- */
+
+    .search {
+      height: 47px;
+      margin-top: 17px;
+
+      border: 1px solid #e6e4dd;
+      border-radius: 12px;
+      background: #fff;
+
+      display: flex;
+      align-items: center;
+      padding: 0 15px;
+
+      color: #67766e;
+    }
+
+    .search svg {
+      width: 21px;
+      height: 21px;
+      margin-right: 11px;
+      flex-shrink: 0;
+    }
+
+    .search span {
+      font-size: 14px;
+      color: #66756d;
+    }
+
+    /* ---------------- QUICK ACTION ---------------- */
+
+    .section {
+      padding: 0 24px;
+    }
+
+    .quick-section {
+      margin-top: 21px;
+    }
+
+    .section-title {
+      font-size: 15px;
+      font-weight: 750;
+      color: #293a31;
+      margin-bottom: 12px;
+      letter-spacing: -0.1px;
+    }
+
+    .quick-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 13px;
+    }
+
+    .action-card {
+      height: 115px;
+      border-radius: 16px;
+      padding: 17px 16px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .action-card.lost {
+      background: var(--orange-light);
+    }
+
+    .action-card.found {
+      background: var(--green-light);
+    }
+
+    .action-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      color: white;
+    }
+
+    .lost .action-icon {
+      background: var(--orange);
+    }
+
+    .found .action-icon {
+      background: var(--green);
+    }
+
+    .action-icon svg {
+      width: 21px;
+      height: 21px;
+      stroke-width: 2;
+    }
+
+    .action-text {
+      margin-top: 3px;
+    }
+
+    .action-title {
+      font-size: 15px;
+      font-weight: 750;
+      color: #293a31;
+      line-height: 18px;
+    }
+
+    .action-subtitle {
+      margin-top: 2px;
+      font-size: 11px;
+      line-height: 15px;
+      color: #69766f;
+    }
+
+    /* ---------------- RECENT LISTINGS ---------------- */
+
+    .recent-section {
+      margin-top: 25px;
+    }
+
+    .recent-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .recent-header .section-title {
+      margin-bottom: 0;
+    }
+
+    .see-all {
+      font-size: 13px;
+      color: #478060;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .listing {
+      min-height: 103px;
+      background: #fff;
+      border: 1px solid #e7e5df;
+      border-radius: 16px;
+
+      margin-bottom: 12px;
+      padding: 14px 13px;
+
+      display: grid;
+      grid-template-columns: 76px 1fr;
+      gap: 9px;
+
+      box-shadow: 0 3px 9px rgba(45, 56, 49, 0.045);
+    }
+
+    .listing-thumb {
+      width: 76px;
+      height: 75px;
+      border-radius: 11px;
+      background: #f7f5ef;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      color: #7b877f;
+    }
+
+    /* Subtle item illustrations */
+    .key-illustration {
+      position: relative;
+      width: 42px;
+      height: 42px;
+    }
+
+    .key-ring {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border: 4px solid #a5aaa4;
+      border-radius: 50%;
+      left: 2px;
+      top: 7px;
+    }
+
+    .key-body {
+      position: absolute;
+      width: 26px;
+      height: 7px;
+      background: #a5aaa4;
+      border-radius: 4px;
+      transform: rotate(43deg);
+      left: 18px;
+      top: 22px;
+    }
+
+    .key-tip {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-right: 4px solid #a5aaa4;
+      border-bottom: 4px solid #a5aaa4;
+      transform: rotate(43deg);
+      right: 0;
+      bottom: 5px;
+    }
+
+    .tablet-illustration {
+      width: 43px;
+      height: 53px;
+      border: 3px solid #a3aaa5;
+      border-radius: 7px;
+      position: relative;
+    }
+
+    .tablet-illustration::after {
+      content: "";
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #a3aaa5;
+      bottom: 4px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .book-illustration {
+      width: 42px;
+      height: 50px;
+      border: 3px solid #a6ada7;
+      border-radius: 4px;
+      position: relative;
+      transform: rotate(-5deg);
+    }
+
+    .book-illustration::before {
+      content: "";
+      position: absolute;
+      left: 6px;
+      top: 7px;
+      width: 24px;
+      height: 3px;
+      background: #b4bab5;
+      box-shadow:
+        0 8px 0 #b4bab5,
+        0 16px 0 #b4bab5;
+    }
+
+    .listing-info {
+      min-width: 0;
+    }
+
+    .listing-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 7px;
+    }
+
+    .category {
+      display: inline-flex;
+      align-items: center;
+      min-height: 18px;
+
+      padding: 2px 8px;
+      border-radius: 6px;
+
+      background: #f5f5ef;
+      color: #68756e;
+
+      font-size: 10px;
+      font-weight: 600;
+    }
+
+    .status {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      line-height: 13px;
+    }
+
+    .status.lost {
+      background: #fde1cc;
+      color: #ed8245;
+    }
+
+    .status.found {
+      background: #dcebd9;
+      color: #4e7f65;
+    }
+
+    .listing-title {
+      margin-top: 3px;
+      font-size: 15px;
+      line-height: 18px;
+      font-weight: 750;
+      color: #293a31;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .metadata {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: #68766f;
+      font-size: 11px;
+      line-height: 16px;
+
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .metadata.location {
+      margin-top: 3px;
+    }
+
+    .metadata.time {
+      margin-top: 0;
+    }
+
+    .metadata svg {
+      width: 13px;
+      height: 13px;
+      flex-shrink: 0;
+      stroke-width: 2;
+    }
+
+    /* ---------------- BOTTOM NAV ---------------- */
+
+    .bottom-nav {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      height: 93px;
+
+      background: rgba(255, 255, 255, 0.98);
+      border-top: 1px solid var(--nav-border);
+
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-around;
+
+      padding-top: 11px;
+    }
+
+    .nav-item {
+      width: 20%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+
+      color: #64766d;
+      text-decoration: none;
+    }
+
+    .nav-icon {
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke-width: 2;
+    }
+
+    .nav-label {
+      font-size: 10px;
+      line-height: 13px;
+      font-weight: 500;
+    }
+
+    .nav-item.active {
+      color: #4b7d63;
+    }
+
+    /* Center report icon */
+    .nav-report .nav-icon {
+      width: 25px;
+      height: 25px;
+      border: 2px solid #63766d;
+      border-radius: 50%;
+    }
+
+    .nav-report .nav-icon svg {
+      width: 15px;
+      height: 15px;
+    }
+
+    /* ---------------- HOME INDICATOR ---------------- */
+
+    .home-indicator {
+      position: absolute;
+      z-index: 10;
+
+      bottom: 7px;
+      left: 50%;
+      transform: translateX(-50%);
+
+      width: 134px;
+      height: 5px;
+      border-radius: 5px;
+
+      background: #20372c;
+    }
+
+    /* ---------------- RESPONSIVE ---------------- */
+
+    @media (min-width: 600px) {
+      body {
+        padding: 30px 0;
+      }
+
+      .app {
+        min-height: 874px;
+        height: 874px;
+        border-radius: 28px;
+        box-shadow: 0 20px 70px rgba(0, 0, 0, 0.16);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="app">
+
+    <!-- HEADER -->
+    <header class="header">
+
+      <div class="header-top">
+
+        <div class="greeting">
+          <h1>Hey, Alex! 👋</h1>
+          <p>State University Campus</p>
+        </div>
+
+        <button class="notification" aria-label="Notifications">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/>
+            <path d="M13.7 21a2 2 0 0 1-3.4 0"/>
+          </svg>
+        </button>
+
+      </div>
+
+      <!-- SEARCH -->
+      <div class="search">
+
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="11" cy="11" r="7"></circle>
+          <path d="m20 20-4-4"></path>
+        </svg>
+
+        <span>Search lost keys, bags, calculators...</span>
+
+      </div>
+
+    </header>
+
+
+    <!-- QUICK ACTION -->
+    <section class="section quick-section">
+
+      <h2 class="section-title">QUICK ACTION</h2>
+
+      <div class="quick-actions">
+
+        <!-- LOST -->
+        <div class="action-card lost">
+
+          <div class="action-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M10.3 2.7 2.7 10.3a2.4 2.4 0 0 0 0 3.4l7.6 7.6a2.4 2.4 0 0 0 3.4 0l7.6-7.6a2.4 2.4 0 0 0 0-3.4l-7.6-7.6a2.4 2.4 0 0 0-3.4 0Z"/>
+              <path d="M12 8v4"/>
+              <circle cx="12" cy="16" r=".7" fill="currentColor"/>
+            </svg>
+          </div>
+
+          <div class="action-text">
+            <div class="action-title">Report Lost</div>
+            <div class="action-subtitle">I can't find my item</div>
+          </div>
+
+        </div>
+
+
+        <!-- FOUND -->
+        <div class="action-card found">
+
+          <div class="action-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="m5 12 4 4L19 6"/>
+            </svg>
+          </div>
+
+          <div class="action-text">
+            <div class="action-title">Report Found</div>
+            <div class="action-subtitle">I found someone's item</div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- RECENT LISTINGS -->
+    <section class="section recent-section">
+
+      <div class="recent-header">
+        <h2 class="section-title">RECENT LISTINGS</h2>
+        <a href="#" class="see-all">See All</a>
+      </div>
+
+
+      <!-- LISTING 1 -->
+      <article class="listing">
+
+        <div class="listing-thumb">
+          <div class="key-illustration">
+            <div class="key-ring"></div>
+            <div class="key-body"></div>
+            <div class="key-tip"></div>
+          </div>
+        </div>
+
+        <div class="listing-info">
+
+          <div class="listing-top">
+            <span class="category">Keys</span>
+            <span class="status lost">Lost</span>
+          </div>
+
+          <div class="listing-title">
+            Dorm Keys with Red Fob
+          </div>
+
+          <div class="metadata location">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/>
+              <circle cx="12" cy="10" r="2.5"/>
+            </svg>
+            <span>Hostel Block B Common Room</span>
+          </div>
+
+          <div class="metadata time">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+            >
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M12 7v5l3 2"/>
+            </svg>
+            <span>10 mins ago</span>
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- LISTING 2 -->
+      <article class="listing">
+
+        <div class="listing-thumb">
+          <div class="tablet-illustration"></div>
+        </div>
+
+        <div class="listing-info">
+
+          <div class="listing-top">
+            <span class="category">Electronics</span>
+            <span class="status found">Found</span>
+          </div>
+
+          <div class="listing-title">
+            iPad Air in Grey Case
+          </div>
+
+          <div class="metadata location">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/>
+              <circle cx="12" cy="10" r="2.5"/>
+            </svg>
+            <span>Central Library Study Pod 4</span>
+          </div>
+
+          <div class="metadata time">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+            >
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M12 7v5l3 2"/>
+            </svg>
+            <span>1 hr ago</span>
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- LISTING 3 -->
+      <article class="listing">
+
+        <div class="listing-thumb">
+          <div class="book-illustration"></div>
+        </div>
+
+        <div class="listing-info">
+
+          <div class="listing-top">
+            <span class="category">Other</span>
+            <span class="status lost">Lost</span>
+          </div>
+
+          <div class="listing-title">
+            Calculus Textbook (Stewart)
+          </div>
+
+          <div class="metadata location">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/>
+              <circle cx="12" cy="10" r="2.5"/>
+            </svg>
+            <span>Science Quad Outdoor Bench...</span>
+          </div>
+
+          <div class="metadata time">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+            >
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M12 7v5l3 2"/>
+            </svg>
+            <span>3 hrs ago</span>
+          </div>
+
+        </div>
+
+      </article>
+
+    </section>
+
+
+    <!-- BOTTOM NAV -->
+    <nav class="bottom-nav">
+
+      <a href="#" class="nav-item active">
+
+        <div class="nav-icon">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V10Z"/>
+          </svg>
+        </div>
+
+        <span class="nav-label">Home</span>
+
+      </a>
+
+
+      <a href="#" class="nav-item">
+
+        <div class="nav-icon">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="11" cy="11" r="7"/>
+            <path d="m20 20-4-4"/>
+          </svg>
+        </div>
+
+        <span class="nav-label">Search</span>
+
+      </a>
+
+
+      <a href="#" class="nav-item nav-report">
+
+        <div class="nav-icon">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+          >
+            <path d="M12 8v8"/>
+            <path d="M8 12h8"/>
+          </svg>
+        </div>
+
+        <span class="nav-label">Report</span>
+
+      </a>
+
+
+      <a href="#" class="nav-item">
+
+        <div class="nav-icon">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="m13 2-2 7H4l6 4-2 7 6-4 6 4-2-7 4-3h-7l-2-8Z"/>
+          </svg>
+        </div>
+
+        <span class="nav-label">Matches</span>
+
+      </a>
+
+
+      <a href="#" class="nav-item">
+
+        <div class="nav-icon">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="8" r="3.5"/>
+            <path d="M5 21c.8-4 3.2-6 7-6s6.2 2 7 6"/>
+          </svg>
+        </div>
+
+        <span class="nav-label">Profile</span>
+
+      </a>
+
+    </nav>
+
+
+    <!-- iOS HOME INDICATOR -->
+    <div class="home-indicator"></div>
+
+  </main>
+
+</body>
+</html>

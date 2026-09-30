@@ -1,0 +1,398 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: #000;
+    font-family: "Inter", Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.phone {
+    width: 402px;
+    height: 874px;
+    background: #faf8f2;
+    position: relative;
+    overflow: hidden;
+    color: #26352c;
+}
+
+/* =========================
+   STATUS BAR
+========================= */
+
+.status-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+}
+
+.time {
+    font-size: 14px;
+    font-weight: 600;
+    color: #26352c;
+}
+
+.status-icons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.signal {
+    height: 14px;
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+}
+
+.signal i {
+    display: block;
+    width: 3px;
+    background: #26352c;
+    border-radius: 2px;
+}
+
+.signal i:nth-child(1) {
+    height: 5px;
+}
+
+.signal i:nth-child(2) {
+    height: 8px;
+}
+
+.signal i:nth-child(3) {
+    height: 11px;
+}
+
+.signal i:nth-child(4) {
+    height: 14px;
+}
+
+.wifi {
+    width: 19px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.wifi svg {
+    width: 19px;
+    height: 16px;
+    fill: none;
+    stroke: #26352c;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+}
+
+.battery {
+    width: 26px;
+    height: 13px;
+    border: 1.5px solid #26352c;
+    border-radius: 4px;
+    position: relative;
+    padding: 2px;
+}
+
+.battery::after {
+    content: "";
+    position: absolute;
+    right: -3px;
+    top: 3px;
+    width: 2px;
+    height: 5px;
+    background: #26352c;
+    border-radius: 1px;
+}
+
+.battery span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #26352c;
+    border-radius: 2px;
+}
+
+/* =========================
+   HOME INDICATOR
+========================= */
+
+.home-indicator {
+    position: absolute;
+    width: 134px;
+    height: 5px;
+    background: #26352c;
+    border-radius: 10px;
+    bottom: 31px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* =========================
+   SPLASH SCREEN
+========================= */
+
+.splash-logo {
+    position: absolute;
+    top: 104px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.logo-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 10px;
+    border-radius: 16px;
+    background: #477a5b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-icon span {
+    width: 29px;
+    height: 29px;
+    border: 2px solid white;
+    border-radius: 50%;
+    color: white;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 3px;
+}
+
+.splash-logo h1 {
+    font-size: 34px;
+    line-height: 38px;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    color: #477a5b;
+}
+
+.splash-logo h1 b {
+    color: #ed7b3d;
+    font-weight: 700;
+}
+
+.splash-logo p {
+    margin-top: 3px;
+    font-size: 15px;
+    line-height: 22px;
+    color: #607367;
+    font-weight: 400;
+}
+
+.splash-content {
+    position: absolute;
+    top: 608px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.splash-content h2 {
+    font-size: 20px;
+    line-height: 25px;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+    color: #26352c;
+}
+
+.splash-content p {
+    margin-top: 5px;
+    font-size: 14px;
+    line-height: 18px;
+    color: #607367;
+    font-weight: 400;
+}
+
+.get-started {
+    position: absolute;
+    left: 24px;
+    bottom: 69px;
+    width: 354px;
+    height: 48px;
+    border: none;
+    border-radius: 28px;
+    background: #477a5b;
+    color: white;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* =========================
+   SIGN UP SCREEN
+========================= */
+
+.signup-content {
+    position: absolute;
+    top: 127px;
+    left: 24px;
+    width: 354px;
+}
+
+.signup-content h1 {
+    font-size: 28px;
+    line-height: 34px;
+    font-weight: 700;
+    letter-spacing: -0.8px;
+    color: #26352c;
+}
+
+.subtitle {
+    margin-top: 2px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #607367;
+    white-space: nowrap;
+}
+
+.signup-content label {
+    display: block;
+    margin-top: 26px;
+    margin-bottom: 7px;
+    font-size: 13px;
+    line-height: 17px;
+    font-weight: 600;
+    color: #26352c;
+}
+
+.input-box {
+    width: 354px;
+    height: 48px;
+    border: 1px solid #eae6df;
+    border-radius: 12px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+}
+
+.input-box svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    fill: none;
+    stroke: #607367;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    margin-left: 10px;
+    background: transparent;
+    color: #607367;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.terms {
+    margin-top: 27px;
+    width: 340px;
+    font-size: 12px;
+    line-height: 16px;
+    color: #607367;
+}
+
+.terms strong {
+    color: #477a5b;
+    font-weight: 600;
+}
+
+.create-account {
+    margin-top: 27px;
+    width: 354px;
+    height: 49px;
+    border: none;
+    border-radius: 28px;
+    background: #477a5b;
+    color: white;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.divider {
+    width: 354px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.divider span {
+    height: 1px;
+    background: #e6e2db;
+    flex: 1;
+}
+
+.divider p {
+    color: #607367;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.google-button {
+    margin-top: 16px;
+    width: 354px;
+    height: 49px;
+    border: 1px solid #e6e2db;
+    border-radius: 28px;
+    background: #ffffff;
+    color: #26352c;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 9px;
+}
+
+.google-icon {
+    font-size: 20px;
+    line-height: 1;
+    color: #26352c;
+}
+
+.login-text {
+    position: absolute;
+    top: 661px;
+    left: 0;
+    width: 354px;
+    text-align: center;
+    color: #607367;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.login-text strong {
+    color: #477a5b;
+    font-weight: 600;
+}
