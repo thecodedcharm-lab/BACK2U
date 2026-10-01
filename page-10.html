@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Ownership</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #ffffff;
+            color: #26372e;
+        }
+
+        .phone {
+            width: 390px;
+            height: 844px;
+            margin: 20px auto;
+            background: #faf9f4;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* STATUS BAR */
+
+        .status-bar {
+            height: 32px;
+            padding: 10px 17px 0;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            font-size: 9px;
+            font-weight: 600;
+
+            color: #344139;
+        }
+
+        .status-icons {
+            font-size: 9px;
+            letter-spacing: 2px;
+        }
+
+        /* HEADER */
+
+        .header {
+            height: 49px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 0 16px;
+
+            border-bottom: 1px solid #e9e7df;
+        }
+
+        .back-button {
+            width: 23px;
+            height: 23px;
+
+            border-radius: 50%;
+            border: 1px solid #e5e4dd;
+
+            background: #ffffff;
+
+            color: #4c5b52;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 17px;
+
+            margin-right: 9px;
+        }
+
+        .header h1 {
+            font-size: 13px;
+            color: #304137;
+        }
+
+        /* CONTENT */
+
+        .content {
+            padding: 13px 17px;
+        }
+
+        .item-title {
+            text-align: left;
+            padding-left: 28px;
+            margin-bottom: 12px;
+        }
+
+        .item-title h2 {
+            font-size: 11px;
+            color: #304037;
+            margin-bottom: 4px;
+        }
+
+        .item-title p {
+            width: 220px;
+
+            font-size: 8px;
+            line-height: 1.35;
+
+            color: #758178;
+        }
+
+        /* QUESTION */
+
+        .question {
+            margin-bottom: 13px;
+        }
+
+        .question label {
+            display: block;
+
+            font-size: 8px;
+            font-weight: 700;
+            line-height: 1.35;
+
+            color: #304037;
+
+            margin-bottom: 6px;
+        }
+
+        .answer {
+            width: 100%;
+            min-height: 52px;
+
+            background: #ffffff;
+
+            border: 1px solid #e7e5dd;
+            border-radius: 8px;
+
+            padding: 10px;
+
+            font-size: 8px;
+            line-height: 1.4;
+
+            color: #4e5c54;
+        }
+
+        .placeholder {
+            color: #859188;
+        }
+
+        /* SUBMIT AREA */
+
+        .submit-area {
+            position: absolute;
+
+            bottom: 0;
+            left: 0;
+
+            width: 100%;
+            height: 91px;
+
+            background: #ffffff;
+
+            border-top: 1px solid #eeece5;
+
+            padding: 15px 17px;
+        }
+
+        .submit-button {
+            width: 100%;
+            height: 34px;
+
+            border: none;
+            border-radius: 18px;
+
+            background: #4d8063;
+            color: #ffffff;
+
+            font-size: 9px;
+            font-weight: 600;
+
+            cursor: pointer;
+        }
+
+        /* HOME INDICATOR */
+
+        .home-indicator {
+            position: absolute;
+
+            bottom: 10px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            width: 96px;
+            height: 4px;
+
+            background: #19251f;
+
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="phone">
+
+    <!-- STATUS BAR -->
+
+    <div class="status-bar">
+
+        <span>9:41</span>
+
+        <span class="status-icons">
+            ▮▮▮  ▰
+        </span>
+
+    </div>
+
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <button class="back-button">
+            ←
+        </button>
+
+        <h1>
+            Verify Ownership
+        </h1>
+
+    </header>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="content">
+
+
+        <!-- ITEM INFORMATION -->
+
+        <section class="item-title">
+
+            <h2>
+                Dorm Keys with Red Fob
+            </h2>
+
+            <p>
+                Answer these questions to help verify your
+                ownership.
+            </p>
+
+        </section>
+
+
+        <!-- QUESTION 1 -->
+
+        <section class="question">
+
+            <label>
+                1. What color/design is the keychain fob?
+            </label>
+
+            <div class="answer">
+                It is a red rectangular plastic fob with hostel
+                room number 302 written in black sharpie.
+            </div>
+
+        </section>
+
+
+        <!-- QUESTION 2 -->
+
+        <section class="question">
+
+            <label>
+                2. Where exactly did you lose it or last have it?
+            </label>
+
+            <div class="answer">
+                I last had it in the Hostel Block B common room
+                near the pool table on Friday night.
+            </div>
+
+        </section>
+
+
+        <!-- QUESTION 3 -->
+
+        <section class="question">
+
+            <label>
+                3. Are there any other distinguishing marks or
+                items attached?
+            </label>
+
+            <div class="answer placeholder">
+                Include other attachments, distinct scratches,
+                or specific key brands...
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- SUBMIT -->
+
+    <div class="submit-area">
+
+        <button class="submit-button">
+            Submit for Verification
+        </button>
+
+    </div>
+
+
+    <!-- HOME INDICATOR -->
+
+    <div class="home-indicator"></div>
+
+</div>
+
+</body>
+</html>
