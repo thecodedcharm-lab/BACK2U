@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Your Matches</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #ffffff;
+            color: #26332d;
+        }
+
+        /* Mobile screen */
+        .phone {
+            width: 390px;
+            min-height: 844px;
+            margin: 20px auto;
+            background: #faf9f4;
+            position: relative;
+            padding: 18px 16px 78px;
+        }
+
+        /* ---------------- HEADER ---------------- */
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 22px;
+        }
+
+        .header h1 {
+            font-size: 17px;
+            font-weight: 700;
+            color: #304b3d;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 10px;
+            line-height: 1.5;
+            color: #8b938e;
+        }
+
+        .active-badge {
+            background: #e6f1e9;
+            color: #4c8063;
+            font-size: 8px;
+            padding: 5px 8px;
+            border-radius: 12px;
+            white-space: nowrap;
+        }
+
+        /* ---------------- MATCH CARD ---------------- */
+
+        .match-card {
+            background: #ffffff;
+            border: 1px solid #eeeeeb;
+            border-radius: 13px;
+            padding: 12px;
+            margin-bottom: 13px;
+            box-shadow: 0 2px 8px rgba(50, 60, 50, 0.04);
+        }
+
+        .match-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 22px;
+        }
+
+        .match-percent {
+            font-size: 8px;
+            padding: 4px 7px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .match-percent.green {
+            color: #4d8565;
+            background: #e4f1e7;
+        }
+
+        .match-percent.orange {
+            color: #d98747;
+            background: #fff0e4;
+        }
+
+        .category {
+            font-size: 8px;
+            color: #8d948f;
+        }
+
+        /* ---------------- ITEMS ---------------- */
+
+        .item-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .item {
+            width: 42%;
+            text-align: center;
+        }
+
+        .item-title {
+            display: block;
+            font-size: 10px;
+            font-weight: 600;
+            color: #344139;
+            margin-bottom: 6px;
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 7px;
+            padding: 3px 6px;
+            border-radius: 6px;
+        }
+
+        .tag.lost {
+            color: #e99555;
+            background: #fff0e4;
+        }
+
+        .tag.found {
+            color: #4e8766;
+            background: #e6f2e9;
+        }
+
+        .match-icon {
+            color: #9ab09f;
+            font-size: 14px;
+        }
+
+        /* ---------------- LOCATION ---------------- */
+
+        .location {
+            font-size: 8px;
+            color: #929a95;
+            margin: 17px 0 12px;
+        }
+
+        .location strong {
+            color: #68746d;
+        }
+
+        /* ---------------- BUTTONS ---------------- */
+
+        .buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        button {
+            flex: 1;
+            height: 29px;
+            border-radius: 7px;
+            font-size: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .secondary {
+            border: 1px solid #dce1dc;
+            background: #ffffff;
+            color: #587061;
+        }
+
+        .primary {
+            border: none;
+            background: #4d8063;
+            color: #ffffff;
+        }
+
+        /* ---------------- BOTTOM NAVIGATION ---------------- */
+
+        .bottom-nav {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 62px;
+            border-top: 1px solid #eeeeeb;
+            background: #ffffff;
+
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .bottom-nav a {
+            text-decoration: none;
+            color: #9aa19d;
+            text-align: center;
+            font-size: 15px;
+        }
+
+        .bottom-nav small {
+            display: block;
+            font-size: 7px;
+            margin-top: 3px;
+        }
+
+        .bottom-nav .selected {
+            color: #4d8063;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="phone">
+
+        <!-- ================= HEADER ================= -->
+
+        <header class="header">
+
+            <div>
+                <h1>✧ Your Matches</h1>
+
+                <p>
+                    We found items that closely match your<br>
+                    reported lost items. Confirm if any belong to you.
+                </p>
+            </div>
+
+            <span class="active-badge">
+                3 Active
+            </span>
+
+        </header>
+
+
+        <!-- ================= MATCH CARD 1 ================= -->
+
+        <div class="match-card">
+
+            <div class="match-top">
+
+                <span class="match-percent green">
+                    92% Match
+                </span>
+
+                <span class="category">
+                    Keys Category
+                </span>
+
+            </div>
+
+
+            <div class="item-row">
+
+                <div class="item">
+
+                    <span class="item-title">
+                        Dorm Keys
+                    </span>
+
+                    <span class="tag lost">
+                        Your Lost
+                    </span>
+
+                </div>
+
+
+                <div class="match-icon">
+                    ↔
+                </div>
+
+
+                <div class="item">
+
+                    <span class="item-title">
+                        Found Keys
+                    </span>
+
+                    <span class="tag found">
+                        Found Item
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="location">
+
+                <strong>
+                    Found location:
+                </strong>
+
+                Hostel Block B
+
+            </div>
+
+
+            <div class="buttons">
+
+                <button class="secondary">
+                    View Details
+                </button>
+
+                <button class="primary">
+                    Verify Match
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= MATCH CARD 2 ================= -->
+
+        <div class="match-card">
+
+            <div class="match-top">
+
+                <span class="match-percent orange">
+                    81% Match
+                </span>
+
+                <span class="category">
+                    Electronics Category
+                </span>
+
+            </div>
+
+
+            <div class="item-row">
+
+                <div class="item">
+
+                    <span class="item-title">
+                        AirPods Pro
+                    </span>
+
+                    <span class="tag lost">
+                        Your Lost
+                    </span>
+
+                </div>
+
+
+                <div class="match-icon">
+                    ↔
+                </div>
+
+
+                <div class="item">
+
+                    <span class="item-title">
+                        Sony Headphones
+                    </span>
+
+                    <span class="tag found">
+                        Found Item
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="buttons">
+
+                <button class="secondary">
+                    View Details
+                </button>
+
+                <button class="primary">
+                    Verify Match
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= BOTTOM NAVIGATION ================= -->
+
+        <nav class="bottom-nav">
+
+            <a href="#">
+                <span>⌂</span>
+                <small>Home</small>
+            </a>
+
+
+            <a href="#">
+                <span>⌕</span>
+                <small>Search</small>
+            </a>
+
+
+            <a href="#">
+                <span>⊕</span>
+                <small>Report</small>
+            </a>
+
+
+            <a href="#" class="selected">
+                <span>✣</span>
+                <small>Matches</small>
+            </a>
+
+
+            <a href="#">
+                <span>♙</span>
+                <small>Profile</small>
+            </a>
+
+        </nav>
+
+    </div>
+
+</body>
+</html>
