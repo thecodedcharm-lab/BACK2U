@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Notifications</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #ffffff;
+            color: #26332d;
+        }
+
+        /* ================= PHONE SCREEN ================= */
+
+        .phone {
+            width: 390px;
+            min-height: 844px;
+            margin: 20px auto;
+            background: #faf9f4;
+            position: relative;
+            padding-bottom: 72px;
+        }
+
+
+        /* ================= HEADER ================= */
+
+        .notification-header {
+            height: 64px;
+            padding: 20px 16px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            background: #faf9f4;
+        }
+
+        .notification-header h1 {
+            font-size: 17px;
+            font-weight: 700;
+            color: #263b31;
+        }
+
+        .notification-header button {
+            border: none;
+            background: transparent;
+
+            color: #4d8063;
+            font-size: 8px;
+            font-weight: 500;
+
+            cursor: pointer;
+        }
+
+
+        /* ================= NOTIFICATIONS LIST ================= */
+
+        .notifications {
+            border-top: 1px solid #efefeb;
+        }
+
+
+        /* ================= SINGLE NOTIFICATION ================= */
+
+        .notification {
+            display: flex;
+            gap: 12px;
+
+            padding: 15px 16px;
+
+            border-bottom: 1px solid #eeeeea;
+
+            background: #faf9f4;
+        }
+
+
+        /* ================= ICON ================= */
+
+        .icon {
+            flex: 0 0 24px;
+
+            width: 24px;
+            height: 24px;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 11px;
+        }
+
+
+        .green-icon {
+            background: #dcece1;
+            color: #4d8063;
+        }
+
+
+        .orange-icon {
+            background: #fff0e0;
+            color: #e8954f;
+        }
+
+
+        .check-icon {
+            background: #e7f0e9;
+            color: #4d8063;
+        }
+
+
+        .neutral-icon {
+            background: #eeeeea;
+            color: #78827c;
+        }
+
+
+        /* ================= NOTIFICATION CONTENT ================= */
+
+        .notification-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+
+        .notification-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 10px;
+
+            margin-bottom: 6px;
+        }
+
+
+        .notification-title strong {
+            font-size: 10px;
+            font-weight: 600;
+            color: #3d4b43;
+        }
+
+
+        .notification-title span {
+            flex-shrink: 0;
+
+            font-size: 7px;
+            color: #9a9f9b;
+        }
+
+
+        .notification-content p {
+            font-size: 8px;
+            line-height: 1.5;
+
+            color: #8b938e;
+        }
+
+
+        /* ================= BOTTOM NAVIGATION ================= */
+
+        .bottom-nav {
+            position: absolute;
+
+            bottom: 0;
+            left: 0;
+
+            width: 100%;
+            height: 62px;
+
+            background: #ffffff;
+
+            border-top: 1px solid #eeeeeb;
+
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+
+        .bottom-nav a {
+            text-decoration: none;
+
+            color: #9aa19d;
+
+            text-align: center;
+        }
+
+
+        .bottom-nav span {
+            display: block;
+
+            font-size: 15px;
+            line-height: 15px;
+        }
+
+
+        .bottom-nav small {
+            display: block;
+
+            font-size: 7px;
+
+            margin-top: 4px;
+        }
+
+
+        /* Active navigation item */
+
+        .bottom-nav .selected {
+            color: #4d8063;
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <div class="phone">
+
+
+        <!-- ================= HEADER ================= -->
+
+        <header class="notification-header">
+
+            <h1>
+                Notifications
+            </h1>
+
+            <button>
+                Mark all as read
+            </button>
+
+        </header>
+
+
+        <!-- ================= NOTIFICATIONS ================= -->
+
+        <main class="notifications">
+
+
+            <!-- Notification 1 -->
+
+            <div class="notification">
+
+                <div class="icon green-icon">
+                    ♙
+                </div>
+
+
+                <div class="notification-content">
+
+                    <div class="notification-title">
+
+                        <strong>
+                            New Match Found
+                        </strong>
+
+                        <span>
+                            2m ago
+                        </span>
+
+                    </div>
+
+
+                    <p>
+                        We found an 87% match for your reported
+                        Lost AirPods in the Student Union.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Notification 2 -->
+
+            <div class="notification">
+
+                <div class="icon orange-icon">
+                    ●
+                </div>
+
+
+                <div class="notification-content">
+
+                    <div class="notification-title">
+
+                        <strong>
+                            New Sighting Reported
+                        </strong>
+
+                        <span>
+                            1h ago
+                        </span>
+
+                    </div>
+
+
+                    <p>
+                        Someone reported a potential sighting
+                        of your Wallet near the Central Library.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Notification 3 -->
+
+            <div class="notification">
+
+                <div class="icon check-icon">
+                    ✓
+                </div>
+
+
+                <div class="notification-content">
+
+                    <div class="notification-title">
+
+                        <strong>
+                            Item Recovered!
+                        </strong>
+
+                        <span>
+                            Yesterday
+                        </span>
+
+                    </div>
+
+
+                    <p>
+                        Your Dorm Keys have been verified and
+                        returned to you. Thanks for using Back2U!
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Notification 4 -->
+
+            <div class="notification">
+
+                <div class="icon neutral-icon">
+                    +
+                </div>
+
+
+                <div class="notification-content">
+
+                    <div class="notification-title">
+
+                        <strong>
+                            New found item near Library
+                        </strong>
+
+                        <span>
+                            2 days ago
+                        </span>
+
+                    </div>
+
+
+                    <p>
+                        A "Sony Wireless Headphones" has been
+                        turned in near the Library Study Pods.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </main>
+
+
+        <!-- ================= BOTTOM NAVIGATION ================= -->
+
+        <nav class="bottom-nav">
+
+
+            <a href="#">
+                <span>⌂</span>
+                <small>Home</small>
+            </a>
+
+
+            <a href="#">
+                <span>⌕</span>
+                <small>Search</small>
+            </a>
+
+
+            <a href="#">
+                <span>⊕</span>
+                <small>Report</small>
+            </a>
+
+
+            <a href="#" class="selected">
+                <span>✣</span>
+                <small>Matches</small>
+            </a>
+
+
+            <a href="#">
+                <span>♙</span>
+                <small>Profile</small>
+            </a>
+
+
+        </nav>
+
+
+    </div>
+
+</body>
+</html>
