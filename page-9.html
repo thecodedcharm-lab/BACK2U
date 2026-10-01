@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #ffffff;
+            color: #26372e;
+        }
+
+        .phone {
+            width: 390px;
+            height: 844px;
+            margin: 20px auto;
+            background: #faf9f4;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* STATUS BAR */
+
+        .status-bar {
+            height: 32px;
+            padding: 10px 17px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 9px;
+            font-weight: 600;
+            color: #344139;
+        }
+
+        .status-icons {
+            font-size: 9px;
+            letter-spacing: 2px;
+        }
+
+        /* PROFILE */
+
+        .profile {
+            text-align: center;
+            padding: 12px 16px 0;
+        }
+
+        .avatar {
+            width: 62px;
+            height: 62px;
+            margin: 0 auto 12px;
+
+            border-radius: 50%;
+            background: #faf9f4;
+            border: 3px solid white;
+            box-shadow: 0 0 0 1px #eeeae1;
+        }
+
+        .profile h1 {
+            font-size: 17px;
+            color: #2f4036;
+            margin-bottom: 5px;
+        }
+
+        .email {
+            font-size: 9px;
+            color: #78847d;
+            margin-bottom: 4px;
+        }
+
+        .member {
+            font-size: 8px;
+            color: #8d9891;
+        }
+
+        /* STATISTICS */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+            margin: 13px 17px;
+
+            background: #ffffff;
+            border: 1px solid #ebe9e1;
+            border-radius: 8px;
+        }
+
+        .stat {
+            height: 48px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .stat + .stat {
+            border-left: 1px solid #eeeeea;
+        }
+
+        .stat strong {
+            font-size: 15px;
+            color: #4d8063;
+            margin-bottom: 4px;
+        }
+
+        .stat span {
+            font-size: 7px;
+            color: #7c8780;
+        }
+
+        /* MENU */
+
+        .menu {
+            margin: 0 17px;
+        }
+
+        .menu-item {
+            height: 38px;
+
+            display: flex;
+            align-items: center;
+
+            background: #ffffff;
+            border: 1px solid #ebe9e1;
+            border-radius: 8px;
+
+            margin-bottom: 8px;
+
+            padding: 0 12px;
+
+            text-decoration: none;
+            color: #36453d;
+        }
+
+        .menu-icon {
+            width: 22px;
+            color: #4d8063;
+            font-size: 15px;
+        }
+
+        .menu-text {
+            font-size: 9px;
+            font-weight: 600;
+        }
+
+        .arrow {
+            margin-left: auto;
+            color: #7c887f;
+            font-size: 13px;
+        }
+
+        .logout {
+            color: #e68143;
+        }
+
+        .logout .menu-icon {
+            color: #e68143;
+        }
+
+        /* BOTTOM NAVIGATION */
+
+        .bottom-nav {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+
+            width: 100%;
+            height: 65px;
+
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+            background: #ffffff;
+            border-top: 1px solid #ebe9e1;
+        }
+
+        .nav-item {
+            text-decoration: none;
+            text-align: center;
+            color: #738078;
+            width: 20%;
+        }
+
+        .nav-icon {
+            display: block;
+            font-size: 16px;
+            height: 20px;
+        }
+
+        .nav-label {
+            display: block;
+            font-size: 7px;
+            margin-top: 3px;
+        }
+
+        .nav-item.active {
+            color: #4d8063;
+        }
+
+        /* HOME INDICATOR */
+
+        .home-indicator {
+            position: absolute;
+            bottom: 7px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            width: 100px;
+            height: 4px;
+
+            background: #18231e;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="phone">
+
+    <!-- STATUS BAR -->
+
+    <div class="status-bar">
+        <span>9:41</span>
+
+        <span class="status-icons">
+            ▮▮▮  ▰
+        </span>
+    </div>
+
+
+    <!-- PROFILE -->
+
+    <section class="profile">
+
+        <div class="avatar"></div>
+
+        <h1>Alex Rivera</h1>
+
+        <p class="email">
+            alex.rivera@university.edu
+        </p>
+
+        <p class="member">
+            Member since Sept 2025
+        </p>
+
+    </section>
+
+
+    <!-- STATISTICS -->
+
+    <section class="stats">
+
+        <div class="stat">
+            <strong>3</strong>
+            <span>Reported Lost</span>
+        </div>
+
+        <div class="stat">
+            <strong>2</strong>
+            <span>Recovered</span>
+        </div>
+
+        <div class="stat">
+            <strong>5</strong>
+            <span>Sightings</span>
+        </div>
+
+    </section>
+
+
+    <!-- MENU -->
+
+    <section class="menu">
+
+        <a href="#" class="menu-item">
+            <span class="menu-icon">◇</span>
+            <span class="menu-text">My Listings</span>
+            <span class="arrow">›</span>
+        </a>
+
+
+        <a href="#" class="menu-item">
+            <span class="menu-icon">✓</span>
+            <span class="menu-text">Recovered Items</span>
+            <span class="arrow">›</span>
+        </a>
+
+
+        <a href="#" class="menu-item">
+            <span class="menu-icon">☷</span>
+            <span class="menu-text">Settings</span>
+            <span class="arrow">›</span>
+        </a>
+
+
+        <a href="#" class="menu-item">
+            <span class="menu-icon">△</span>
+            <span class="menu-text">Help and Support</span>
+            <span class="arrow">›</span>
+        </a>
+
+
+        <a href="#" class="menu-item logout">
+            <span class="menu-icon">↪</span>
+            <span class="menu-text">Log Out</span>
+        </a>
+
+    </section>
+
+
+    <!-- BOTTOM NAVIGATION -->
+
+    <nav class="bottom-nav">
+
+        <a href="#" class="nav-item">
+            <span class="nav-icon">⌂</span>
+            <span class="nav-label">Home</span>
+        </a>
+
+        <a href="#" class="nav-item">
+            <span class="nav-icon">⌕</span>
+            <span class="nav-label">Search</span>
+        </a>
+
+        <a href="#" class="nav-item">
+            <span class="nav-icon">⊕</span>
+            <span class="nav-label">Report</span>
+        </a>
+
+        <a href="#" class="nav-item">
+            <span class="nav-icon">✣</span>
+            <span class="nav-label">Matches</span>
+        </a>
+
+        <a href="#" class="nav-item active">
+            <span class="nav-icon">♙</span>
+            <span class="nav-label">Profile</span>
+        </a>
+
+    </nav>
+
+
+    <div class="home-indicator"></div>
+
+</div>
+
+</body>
+</html>
